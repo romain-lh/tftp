@@ -1,0 +1,193 @@
+
+!
+version 12.2
+no service pad
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname equipe6
+!
+boot-start-marker
+boot-end-marker
+!
+enable secret 5 $1$LijU$6dt4GPY.IPHIJtEGDjfxb.
+enable password azerty
+!
+username groupe6 password 0 azerty
+username admin secret 5 $1$HLB5$ENj9fELlK.ra7QR95WJaw1
+!
+!
+no aaa new-model
+switch 1 provision ws-c3750g-24t
+system mtu routing 1500
+ip routing
+ip domain-name groupe6
+ip dhcp excluded-address 192.168.100.1 192.168.100.9
+ip dhcp excluded-address 192.168.100.21 192.168.100.254
+ip dhcp excluded-address 192.168.20.1
+ip dhcp excluded-address 192.168.20.1 192.168.20.9
+ip dhcp excluded-address 192.168.20.21 192.168.20.254
+ip dhcp excluded-address 192.168.30.1 192.168.30.9
+ip dhcp excluded-address 192.168.30.21 192.168.30.255
+ip dhcp excluded-address 192.168.40.21 192.168.40.255
+ip dhcp excluded-address 192.168.40.1 192.168.40.9
+!
+ip dhcp pool VLAN_20_POOL
+   network 192.168.20.0 255.255.255.0
+   default-router 192.168.20.250 
+!
+ip dhcp pool VLAN_30_POOL
+   network 192.168.30.0 255.255.255.0
+   default-router 192.168.30.250 
+!
+ip dhcp pool VLAN_40_POOL
+   network 192.168.40.0 255.255.255.0
+   default-router 192.168.40.250 
+!
+ip dhcp pool VLAN_500_POOL
+   network 192.168.1.0 255.255.255.0
+   default-router 192.168.1.250 
+!
+!
+!
+!
+crypto pki trustpoint TP-self-signed-1499152896
+ enrollment selfsigned
+ subject-name cn=IOS-Self-Signed-Certificate-1499152896
+ revocation-check none
+ rsakeypair TP-self-signed-1499152896
+!
+!
+crypto pki certificate chain TP-self-signed-1499152896
+ certificate self-signed 01
+  30820247 308201B0 A0030201 02020101 300D0609 2A864886 F70D0101 04050030 
+  31312F30 2D060355 04031326 494F532D 53656C66 2D536967 6E65642D 43657274 
+  69666963 6174652D 31343939 31353238 3936301E 170D3933 30333232 30323136 
+  32305A17 0D323030 31303130 30303030 305A3031 312F302D 06035504 03132649 
+  4F532D53 656C662D 5369676E 65642D43 65727469 66696361 74652D31 34393931 
+  35323839 3630819F 300D0609 2A864886 F70D0101 01050003 818D0030 81890281 
+  8100B459 2A26E866 63CFB877 3F251B4F 185B39C7 F5C8A1E5 BFF7EA30 C976D034 
+  821F42CC AF1B9E97 F7C6CC2D 9FB1D6BF 31248342 7C4706C0 D5646254 1E35BDC6 
+  F29AD798 76C148D5 E0468ACB 4F1A8475 72C96987 2186CE5B 792D3C51 01C48F19 
+  C0C06155 4C4D46ED 430B625C C93CCFE2 D9E0F39E E1B85CE6 07B5042D 64AE3AED 
+  637F0203 010001A3 6F306D30 0F060355 1D130101 FF040530 030101FF 301A0603 
+  551D1104 13301182 0F657175 69706536 2E67726F 75706536 301F0603 551D2304 
+  18301680 149150A9 5EC360D8 05A05C59 FE48C09E AE8E1705 04301D06 03551D0E 
+  04160414 9150A95E C360D805 A05C59FE 48C09EAE 8E170504 300D0609 2A864886 
+  F70D0101 04050003 8181001B 475EC97E 79BD62CB C0F6162D 214E213F 280CE0AA 
+  42861C8F BBDE9369 FA6CB5BA 0F4A6A20 BF9A4B26 725B43AB 11918494 A29A0CDC 
+  35A23B12 FC528F1D D780D2A3 3877CE8F 73C22794 BBD83B82 FB510001 1337D1EA 
+  54986BE7 82BF91D2 52E60FE1 163497DD 2CFB84F7 A3DC5EF3 765B5345 7D223C03 
+  680249C3 5FFE3BE5 E3000B
+  quit
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+vlan internal allocation policy ascending
+!
+!
+!
+!
+interface GigabitEthernet1/0/1
+!
+interface GigabitEthernet1/0/2
+!
+interface GigabitEthernet1/0/3
+!
+interface GigabitEthernet1/0/4
+!
+interface GigabitEthernet1/0/5
+!
+interface GigabitEthernet1/0/6
+!
+interface GigabitEthernet1/0/7
+!
+interface GigabitEthernet1/0/8
+!
+interface GigabitEthernet1/0/9
+!
+interface GigabitEthernet1/0/10
+!
+interface GigabitEthernet1/0/11
+!
+interface GigabitEthernet1/0/12
+!
+interface GigabitEthernet1/0/13
+!
+interface GigabitEthernet1/0/14
+!
+interface GigabitEthernet1/0/15
+!
+interface GigabitEthernet1/0/16
+!
+interface GigabitEthernet1/0/17
+!
+interface GigabitEthernet1/0/18
+!
+interface GigabitEthernet1/0/19
+!
+interface GigabitEthernet1/0/20
+!
+interface GigabitEthernet1/0/21
+!
+interface GigabitEthernet1/0/22
+!
+interface GigabitEthernet1/0/23
+!
+interface GigabitEthernet1/0/24
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10,11,20,30,40,50,60,100,200,500
+ switchport mode trunk
+!
+interface Vlan1
+ no ip address
+!
+interface Vlan10
+ ip address 192.168.10.250 255.255.255.0
+!
+interface Vlan11
+ ip address 192.168.11.250 255.255.255.0
+!
+interface Vlan20
+ ip address 192.168.20.250 255.255.255.0
+!
+interface Vlan30
+ ip address 192.168.30.250 255.255.255.0
+!
+interface Vlan40
+ ip address 192.168.40.250 255.255.255.0
+!
+interface Vlan50
+ ip address 192.168.50.250 255.255.255.0
+!
+interface Vlan100
+ ip address 192.168.100.250 255.255.255.0
+!
+interface Vlan200
+ ip address 192.168.200.250 255.255.255.0
+!
+interface Vlan500
+ ip address 192.168.1.250 255.255.255.0
+!
+ip classless
+ip http server
+ip http secure-server
+!
+!
+!
+!
+!
+line con 0
+line vty 0 4
+ password cisco
+ login local
+ transport input telnet
+line vty 5 15
+ password azerty
+ login local
+!
+end
